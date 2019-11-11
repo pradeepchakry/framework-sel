@@ -2,7 +2,6 @@ package com.work.framework.utils;
 
 import com.work.framework.base.DriverBase;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,14 +11,14 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Selenium Driver Wait Utility Class
- *
  */
 public class TestUtils {
 
     static Logger logger = LoggerFactory.getLogger(TestUtils.class);
 
     // constructor
-    public TestUtils() {}
+    public TestUtils() {
+    }
 
     /**
      * getBrowserInfo method gets Capabilities from the given WebDriver driver object
@@ -57,6 +56,7 @@ public class TestUtils {
     /**
      * waitFor method to wait up to a designated period before
      * throwing exception (static locator)
+     *
      * @param element
      * @param timer
      */
@@ -66,13 +66,15 @@ public class TestUtils {
             // wait for the element to appear
             WebDriverWait exists = new WebDriverWait(DriverBase.getInstance().getCurrentDriver(), timer);
             exists.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
-        } catch(Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
 
     /**
      * overloaded waitFor method to wait up to a designated period before
      * throwing exception (dynamic locator)
+     *
      * @param by
      * @param timer
      */
@@ -84,7 +86,8 @@ public class TestUtils {
 
             //examples: By.id(id), By.name(name), By.xpath(loactor), By.cssSelector(css)
             exists.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(by)));
-        } catch(Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -95,14 +98,15 @@ public class TestUtils {
      * @param timer
      */
     public static void waitForGone(By by,
-                               int timer) {
+                                   int timer) {
         try {
             // wait for the element to disappear
             WebDriverWait exists = new WebDriverWait(DriverBase.getInstance().getCurrentDriver(), timer);
 
             //examples: By.id(id), By.name(name), By.xpath(loactor), By.cssSelector(css)
             exists.until(ExpectedConditions.refreshed(ExpectedConditions.invisibilityOfElementLocated(by)));
-        } catch(Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -113,12 +117,13 @@ public class TestUtils {
      * @param timer
      */
     public static void waitForUrl(String url,
-                                   int timer) {
+                                  int timer) {
         try {
             WebDriverWait exists = new WebDriverWait(DriverBase.getInstance().getCurrentDriver(), timer);
 
             exists.until(ExpectedConditions.refreshed(ExpectedConditions.urlContains(url)));
-        } catch(Exception e) {}
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -129,13 +134,13 @@ public class TestUtils {
      * @param timer
      */
     public static boolean elementExists(WebElement element,
-                                    int timer) {
+                                        int timer) {
         try {
             WebDriverWait exists = new WebDriverWait(DriverBase.getInstance().getCurrentDriver(), timer);
 
             exists.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
             return true;
-        } catch(StaleElementReferenceException |
+        } catch (StaleElementReferenceException |
                 TimeoutException |
                 NoSuchElementException e) {
             return false;
@@ -150,15 +155,14 @@ public class TestUtils {
      * @param timer
      */
     public static void waitForTitle(String title,
-                                   int timer) {
+                                    int timer) {
         try {
             WebDriverWait exists = new WebDriverWait(DriverBase.getInstance().getCurrentDriver(), timer);
 
             exists.until(ExpectedConditions.refreshed(ExpectedConditions.titleContains(title)));
-        } catch(Exception e) {}
+        } catch (Exception e) {
+        }
     }
-
-    //  https://id.atlassian.com/invite/p/confluence?id=chrLBXy4SzSF-zGZQusaDw&atlOrigin=eyJpIjoiYzYxMDU1Y2Q0NDE5NGI1MTkwZDNmNjY2NGMzMzZmMWYiLCJwIjoiYyJ9
 
     /**
      * pressKeyDown method to press a key on keyboard

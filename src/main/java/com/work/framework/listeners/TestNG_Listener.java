@@ -13,19 +13,22 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Listener Class to customize logs
+ */
 public class TestNG_Listener extends TestListenerAdapter {
 
-    private String logFile = getLogFileName();
-
     private static Logger logger = LoggerFactory.getLogger(TestNG_Listener.class);
+    private String logFile = getLogFileName();
 
     @Override
     public void onStart(ITestContext testContext) {
         try {
             log("\n Suite Start Date: " +
                     new SimpleDateFormat("MM.dd.yyyy.HH.mm.ss")
-            .format(new Date()));
-        } catch (Exception e) {}
+                            .format(new Date()));
+        } catch (Exception e) {
+        }
 
         super.onStart(testContext);
     }
@@ -52,8 +55,8 @@ public class TestNG_Listener extends TestListenerAdapter {
             log("***Result = PASSED\n");
             log(testResult.getEndMillis(),
                     "TEST -> " +
-                    testResult.getInstanceName() +
-                    "." + testResult.getName());
+                            testResult.getInstanceName() +
+                            "." + testResult.getName());
             log("\n");
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,6 +65,13 @@ public class TestNG_Listener extends TestListenerAdapter {
         super.onTestSuccess(testResult);
     }
 
+    /**
+     * log method to write to a log file
+     *
+     * @param date
+     * @param dataLine
+     * @throws Exception
+     */
     public void log(long date, String dataLine) throws Exception {
         System.out.format("%s%n", String.valueOf(new Date(date)), dataLine);
 
@@ -70,6 +80,12 @@ public class TestNG_Listener extends TestListenerAdapter {
         }
     }
 
+    /**
+     * log - overloaded log method to write to log file
+     *
+     * @param dataLine
+     * @throws Exception
+     */
     public void log(String dataLine) throws Exception {
         System.out.format("%s%n", dataLine);
 
@@ -78,10 +94,15 @@ public class TestNG_Listener extends TestListenerAdapter {
         }
     }
 
+    /**
+     * getLogFileName - method to generate a file name with a Time Stamp added
+     *
+     * @return
+     */
     public String getLogFileName() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        if(logFile == null) {
+        if (logFile == null) {
             this.logFile = new File
                     ("Test_" + sdf.format(timestamp.getTime()) + ".log").getAbsolutePath();
         }
@@ -89,6 +110,12 @@ public class TestNG_Listener extends TestListenerAdapter {
         return this.logFile;
     }
 
+    /**
+     * writeLogFile - method to write the given data to a file
+     *
+     * @param file
+     * @param dataLine
+     */
     public void writeLogFile(String file, String dataLine) {
         try {
             FileWriter writer = new FileWriter(new File(file));

@@ -15,6 +15,7 @@
 		<testng.version>6.14.3</testng.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<jackson.version>2.9.0</jackson.version>
+		<testSuite>src/test/resources/Basic-TestNG-Suite.xml</testSuite>
 	</properties>
 
 	<build>
@@ -35,6 +36,19 @@
 					<source>${project.compile.source}</source>
 					<target>${project.compile.target}</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>report-only</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -58,7 +72,7 @@
 						<exclude>**/*TestCase.java</exclude>
 					</excludes>
 					<suiteXmlFiles>
-						<suiteXmlFile>TestNG-Suite.xml</suiteXmlFile>
+						<suiteXmlFile>${testSuite}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
@@ -113,6 +127,16 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>

@@ -7,9 +7,8 @@ import com.work.framework.utils.TestUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
 
-public abstract class BrowserBasePO <M extends WebElement> {
+public abstract class BrowserBasePO<M extends WebElement> {
     public int elementWait = Global_VARS.TIMEOUT_ELEMENT;
     public String pageTitle = "";
     WebDriver driver = DriverBase.getInstance().getDriver();
@@ -19,10 +18,13 @@ public abstract class BrowserBasePO <M extends WebElement> {
         PageFactory.initElements(driver, this);
     }
 
-    public abstract void setElementWait(int elementWait);
     public abstract int getElementWait();
-    public abstract void setPageTitle(String pageTitle);
+
+    public abstract void setElementWait(int elementWait);
+
     public abstract String getPageTitle();
+
+    public abstract void setPageTitle(String pageTitle);
 
     public String getTitle() throws Exception {
         return driver.getTitle();

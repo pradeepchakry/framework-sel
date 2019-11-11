@@ -6,26 +6,23 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddPagePO<M extends WebElement> extends BrowserBasePO {
+    @FindBy(id = "myApp_exception")
+    public M error;
+    @FindBy(xpath = "//div[@class='EditorTitle_root_2Gy']/textarea")
+    public WebElement pageTitleField;
+    @FindBy(id = "close-button")
+    public WebElement closeButton;
+    @FindBy(id = "publish-button")
+    public WebElement publishButton;
+    @FindBy(id = "title-text")
+    public WebElement pageTitleHeading;
     WebDriver driver;
 
-    @FindBy(id = "myApp_exception")
-    protected M error;
-
-    @FindBy(xpath = "//div[@class='EditorTitle_root_2Gy']/textarea")
-    protected WebElement pageTitleField;
-
-    @FindBy(id = "close-button")
-    protected WebElement closeButton;
-
-    @FindBy(id = "publish-button")
-    protected WebElement publishButton;
-
-    @FindBy(id = "title-text")
-    protected WebElement pageTitleHeading;
-
-    @Override
-    public void setElementWait(int elementWait) {
-
+    // constructor
+    public AddPagePO(WebDriver driver) throws Exception {
+        super();
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     @Override
@@ -34,7 +31,7 @@ public class AddPagePO<M extends WebElement> extends BrowserBasePO {
     }
 
     @Override
-    public void setPageTitle(String pageTitle) {
+    public void setElementWait(int elementWait) {
 
     }
 
@@ -43,10 +40,8 @@ public class AddPagePO<M extends WebElement> extends BrowserBasePO {
         return null;
     }
 
-    // constructor
-    public AddPagePO(WebDriver driver) throws Exception {
-        super();
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    @Override
+    public void setPageTitle(String pageTitle) {
+
     }
 }

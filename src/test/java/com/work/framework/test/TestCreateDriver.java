@@ -12,6 +12,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+/**
+ * Class to test framework driver functionality
+ */
 @Listeners(TestNG_Listener.class)
 public class TestCreateDriver {
     WebDriver driver;

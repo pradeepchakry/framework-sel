@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="8" passed="8">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Basic TestNG Suite" duration-ms="103939" started-at="2019-11-11T12:16:08Z" finished-at="2019-11-11T12:17:52Z">
+    <groups>
+    </groups>
+    <test name="Confluence Create/Edit Page Tests" duration-ms="103939" started-at="2019-11-11T12:16:08Z" finished-at="2019-11-11T12:17:52Z">
+      <class name="com.work.confluence.test.CreatePageTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.work.confluence.test.CreatePageTest@783e6358]" name="setup" is-config="true" duration-ms="9185" started-at="2019-11-11T12:16:08Z" finished-at="2019-11-11T12:16:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="openURL(com.work.confluence.data.AccountInfo)[pri:0, instance:com.work.confluence.test.CreatePageTest@783e6358]" name="openURL" duration-ms="4127" started-at="2019-11-11T12:16:17Z" data-provider="accountInfo_JSON" finished-at="2019-11-11T12:16:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.work.confluence.data.AccountInfo@6cce16f4]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openURL -->
+        <test-method status="PASS" signature="login()[pri:0, instance:com.work.confluence.test.CreatePageTest@783e6358]" name="login" duration-ms="10788" started-at="2019-11-11T12:16:21Z" depends-on-methods="com.work.confluence.test.CreatePageTest.openURL" finished-at="2019-11-11T12:16:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="createBlankPage(com.work.confluence.data.PageInfo)[pri:0, instance:com.work.confluence.test.CreatePageTest@783e6358]" name="createBlankPage" duration-ms="23978" started-at="2019-11-11T12:16:32Z" data-provider="pageInfo_JSON" depends-on-methods="com.work.confluence.test.CreatePageTest.login" finished-at="2019-11-11T12:16:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.work.confluence.data.PageInfo@6af9fcb2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createBlankPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.work.confluence.test.CreatePageTest@783e6358]" name="tearDown" is-config="true" duration-ms="6656" started-at="2019-11-11T12:16:56Z" finished-at="2019-11-11T12:17:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.work.confluence.test.CreatePageTest -->
+      <class name="com.work.confluence.test.RestrictPageTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.work.confluence.test.RestrictPageTest@17550481]" name="setup" is-config="true" duration-ms="8232" started-at="2019-11-11T12:17:03Z" finished-at="2019-11-11T12:17:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="openURL(com.work.confluence.data.AccountInfo)[pri:0, instance:com.work.confluence.test.RestrictPageTest@17550481]" name="openURL" duration-ms="4125" started-at="2019-11-11T12:17:11Z" data-provider="accountInfo_JSON" finished-at="2019-11-11T12:17:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.work.confluence.data.AccountInfo@7efaad5a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openURL -->
+        <test-method status="PASS" signature="login()[pri:0, instance:com.work.confluence.test.RestrictPageTest@17550481]" name="login" duration-ms="10601" started-at="2019-11-11T12:17:15Z" depends-on-methods="com.work.confluence.test.RestrictPageTest.openURL" finished-at="2019-11-11T12:17:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="goToUserSpace()[pri:0, instance:com.work.confluence.test.RestrictPageTest@17550481]" name="goToUserSpace" duration-ms="3155" started-at="2019-11-11T12:17:26Z" depends-on-methods="com.work.confluence.test.RestrictPageTest.login" finished-at="2019-11-11T12:17:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToUserSpace -->
+        <test-method status="PASS" signature="openExistingPage()[pri:0, instance:com.work.confluence.test.RestrictPageTest@17550481]" name="openExistingPage" duration-ms="4593" started-at="2019-11-11T12:17:29Z" depends-on-methods="com.work.confluence.test.RestrictPageTest.goToUserSpace" finished-at="2019-11-11T12:17:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openExistingPage -->
+        <test-method status="PASS" signature="applyPageRestrictions(com.work.confluence.data.PageInfo)[pri:0, instance:com.work.confluence.test.RestrictPageTest@17550481]" name="applyPageRestrictions" duration-ms="9168" started-at="2019-11-11T12:17:33Z" data-provider="pageInfo_JSON" depends-on-methods="com.work.confluence.test.RestrictPageTest.openExistingPage" finished-at="2019-11-11T12:17:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[com.work.confluence.data.PageInfo@1869fbd2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- applyPageRestrictions -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.work.confluence.test.RestrictPageTest@17550481]" name="tearDown" is-config="true" duration-ms="9071" started-at="2019-11-11T12:17:42Z" finished-at="2019-11-11T12:17:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.work.confluence.test.RestrictPageTest -->
+    </test> <!-- Confluence Create/Edit Page Tests -->
+  </suite> <!-- Basic TestNG Suite -->
+</testng-results>

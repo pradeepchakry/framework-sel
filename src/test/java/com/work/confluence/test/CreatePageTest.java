@@ -1,7 +1,9 @@
 package com.work.confluence.test;
 
-import com.work.confluence.pageObjects.GlobalFunctionality;
-import com.work.confluence.pageObjects.HomePagePO;
+import com.work.confluence.data.AccountInfo;
+import com.work.confluence.data.JSONDataProvider;
+import com.work.confluence.data.PageInfo;
+import com.work.confluence.functionality.GlobalFunctionality;
 import com.work.confluence.pageObjects.LoginPagePO;
 import com.work.framework.base.DriverBase;
 import com.work.framework.listeners.TestNG_Listener;
@@ -18,41 +20,46 @@ import org.testng.annotations.Test;
 
 @Listeners(TestNG_Listener.class)
 public class CreatePageTest {
+    GlobalFunctionality globalFunctionality;
     private WebDriver driver;
     private DriverBase driverBase;
     private Logger logger = LoggerFactory.getLogger(CreatePageTest.class);
-    private String homePageURL = "https://sh1pf1984.atlassian.net";
     private LoginPagePO loginPagePO;
-    private HomePagePO homePagePO;
+    private AccountInfo accountInfo;
+    private PageInfo pageInfo;
 
     @BeforeClass
     public void setup() throws Exception {
         driverBase = DriverBase.getInstance();
         driverBase.setDriver(Global_VARS.BROWSER, Global_VARS.ENVIRONMENT, Global_VARS.PLATFORM);
         driver = driverBase.getCurrentDriver();
+        driver.manage().window().maximize();
+
+        globalFunctionality = new GlobalFunctionality();
     }
 
-    @Test
-    public void homePageLoaded() {
-        driver.get(homePageURL);
+    @Test(dataProvider = "accountInfo_JSON", dataProviderClass = JSONDataProvider.class)
+    public void openURL(AccountInfo data) {
+        this.accountInfo = data;
+        driver.get(this.accountInfo.getUrl());
         Assert.assertTrue(JavaScriptUtils.isPageReady(driver));
     }
 
-    @Test (dependsOnMethods = {"homePageLoaded"})
+    @Test(dependsOnMethods = {"openURL"})
     public void login() throws Exception {
         loginPagePO = new LoginPagePO(driver);
-        loginPagePO.login("sh1pf1984@gmail.com", "sh1pfr1z");
+        loginPagePO.login(this.accountInfo.getUserName(), this.accountInfo.getPassword());
     }
 
-    @Test (dependsOnMethods = {"login"})
-    public void createBlankPage() throws Exception {
-        GlobalFunctionality functionality = new GlobalFunctionality();
-        functionality.createBlankPage();
+    @Test(dependsOnMethods = {"login"}, dataProvider = "pageInfo_JSON", dataProviderClass = JSONDataProvider.class)
+    public void createBlankPage(PageInfo data) throws Exception {
+        this.pageInfo = data;
+        globalFunctionality.createBlankPage(this.pageInfo.getTitle());
     }
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+        DriverBase.getInstance().closeDriver();
     }
 
 }

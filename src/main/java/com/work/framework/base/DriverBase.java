@@ -25,17 +25,12 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings("varargs")
 public class DriverBase {
 
-    private static DriverBase instance = null;
-
-    private String browserHandle = null;
-
     private static final int IMPLICIT_TIMEOUT = 0;
-
-    private Properties driverProps = new Properties();
-
     private static final String propertyFile = new File
             ("src/main/resources/selenium.properties").getAbsolutePath();
-
+    private static DriverBase instance = null;
+    private String browserHandle = null;
+    private Properties driverProps = new Properties();
     private ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
 
     private String getEnv = null;
@@ -43,7 +38,8 @@ public class DriverBase {
     private Logger logger = LoggerFactory.getLogger(DriverBase.class);
 
     // constructor
-    private DriverBase() {}
+    private DriverBase() {
+    }
 
     /**
      * getInstance method to retrieve active driver instance
@@ -51,7 +47,7 @@ public class DriverBase {
      * @return CreateDriver
      */
     public static DriverBase getInstance() {
-        if( instance == null ) {
+        if (instance == null) {
             instance = new DriverBase();
         }
         return instance;
@@ -60,9 +56,9 @@ public class DriverBase {
     /**
      * setDriver method
      *
-     * @param browser Chrome, Firefox or Internet Explorer
+     * @param browser     Chrome, Firefox or Internet Explorer
      * @param environment Linux, Windows or Mac
-     * @param platform Local, Remote or SauceLabs
+     * @param platform    Local, Remote or SauceLabs
      * @throws Exception
      */
     public final void setDriver(String browser,
@@ -75,14 +71,14 @@ public class DriverBase {
         driverProps.load(new FileInputStream(propertyFile));
 
         if ("firefox".equals(browser)) {
-            if ( environment.equalsIgnoreCase("local") ) {
-                if ( platform.toLowerCase().contains("windows") ) {
+            if (environment.equalsIgnoreCase("local")) {
+                if (platform.toLowerCase().contains("windows")) {
                     System.setProperty("webdriver.gecko.driver",
                             driverProps.getProperty("gecko.driver.windows.path"));
-                } else if ( platform.toLowerCase().contains("linux") ) {
+                } else if (platform.toLowerCase().contains("linux")) {
                     System.setProperty("webdriver.gecko.driver",
                             driverProps.getProperty("gecko.driver.linux.path"));
-                } else if ( platform.toLowerCase().contains("mac") ) {
+                } else if (platform.toLowerCase().contains("mac")) {
                     System.setProperty("webdriver.gecko.driver",
                             driverProps.getProperty("gecko.driver.mac.path"));
                 }
@@ -99,14 +95,14 @@ public class DriverBase {
             caps.setCapability("marionette", "true");
             webDriver.set(new FirefoxDriver(options.merge(caps)));
         } else if ("chrome".equals(browser)) {
-            if ( environment.equalsIgnoreCase("local") ) {
-                if ( platform.toLowerCase().contains("windows") ) {
+            if (environment.equalsIgnoreCase("local")) {
+                if (platform.toLowerCase().contains("windows")) {
                     System.setProperty("webdriver.chrome.driver",
                             driverProps.getProperty("chrome.driver.win64.path"));
-                } else if ( platform.toLowerCase().contains("linux") ) {
+                } else if (platform.toLowerCase().contains("linux")) {
                     System.setProperty("webdriver.chrome.driver",
                             driverProps.getProperty("chrome.driver.linux.path"));
-                } else if ( platform.toLowerCase().contains("mac") ) {
+                } else if (platform.toLowerCase().contains("mac")) {
                     System.setProperty("webdriver.chrome.driver",
                             driverProps.getProperty("chrome.driver.mac.path"));
                 }
@@ -124,7 +120,7 @@ public class DriverBase {
             caps.setCapability(ChromeOptions.CAPABILITY, options);
             webDriver.set(new ChromeDriver(options.merge(caps)));
         } else if ("ie".equals(browser)) {
-            if ( environment.equalsIgnoreCase("local") ) {
+            if (environment.equalsIgnoreCase("local")) {
                 if (platform.toLowerCase().contains("windows")) {
                     System.setProperty("webdriver.ie.driver",
                             driverProps.getProperty("ie.driver.win64.path"));
@@ -168,7 +164,7 @@ public class DriverBase {
     public void driverWait(long seconds) {
         try {
             Thread.sleep(TimeUnit.SECONDS.toMillis(seconds));
-        } catch(InterruptedException e) {
+        } catch (InterruptedException e) {
             logger.info("Timed out waiting " + seconds + " secs");
         }
     }

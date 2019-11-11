@@ -1,0 +1,13 @@
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/test/RestrictPageTest.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/test/CreatePageTest.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/data/JSONDataProvider.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/pageObjects/UserPagePO.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/data/PageInfo.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/pageObjects/LoginPagePO.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/pageObjects/BrowserBasePO.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/pageObjects/HomePagePO.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/functionality/PageFunctionality.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/data/AccountInfo.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/functionality/GlobalFunctionality.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/confluence/pageObjects/AddPagePO.java
+/home/discovery/work/source/framework/framework-sel/src/test/java/com/work/framework/test/TestCreateDriver.java

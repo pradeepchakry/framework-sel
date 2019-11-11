@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Basic TestNG Suite" verbose="2">
+    <test name="Confluence Create/Edit Page Tests" verbose="2">
+        <classes>
+            <class name="com.work.confluence.test.CreatePageTest"></class>
+            <class name="com.work.confluence.test.RestrictPageTest"></class>
+        </classes>
+    </test>
+</suite>
