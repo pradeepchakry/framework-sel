@@ -14,7 +14,7 @@
 		<selenium.version>3.11.0</selenium.version>
 		<testng.version>6.14.3</testng.version>
 		<slf4j.version>1.7.7</slf4j.version>
-		<jackson.version>2.9.0</jackson.version>
+		<jackson.version>2.13.0</jackson.version>
 		<testSuite>src/test/resources/Basic-TestNG-Suite.xml</testSuite>
 	</properties>
 

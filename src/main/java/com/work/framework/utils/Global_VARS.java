@@ -7,8 +7,8 @@ import java.io.File;
  */
 public class Global_VARS {
     // target app defaults
-    public static final String BROWSER = "firefox";
-    public static final String PLATFORM = "linux";
+    public static final String BROWSER = "chrome";
+    public static final String PLATFORM = "mac";
     public static final String ENVIRONMENT = "local";
     public static final String DEF_BROWSER = "null";
     public static final String DEF_PLATFORM = "null";
