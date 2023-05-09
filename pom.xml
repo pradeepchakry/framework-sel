@@ -12,7 +12,7 @@
 		<project.compile.source>1.8</project.compile.source>
 		<project.compile.target>1.8</project.compile.target>
 		<selenium.version>3.11.0</selenium.version>
-		<testng.version>6.14.3</testng.version>
+		<testng.version>7.5.1</testng.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<jackson.version>2.13.3</jackson.version>
 		<testSuite>src/test/resources/Basic-TestNG-Suite.xml</testSuite>
